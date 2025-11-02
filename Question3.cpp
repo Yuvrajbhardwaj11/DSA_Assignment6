@@ -17,10 +17,21 @@ int main() {
     d2->prev = d1;
     d2->next = d3;
     d3->prev = d2;
-    int count = 0;
+    int forward_count = 0;
     Node* t = d1;
-    while (t) { count++; t = t->next; }
-    cout << "Doubly size: " << count << endl;
+    while (t) { forward_count++; t = t->next; }
+    cout << forward_count << endl;
+
+    Node* tail = d1;
+    while (tail->next) tail = tail->next;
+
+    int backward_count = 0;
+    t = tail;
+    while (t) { backward_count++; t = t->prev; }
+    cout << backward_count << endl;
+
+    cout << (forward_count == backward_count ? "Counts match" : "Mismatch") << endl;
+}
 
     Node* c1 = new Node(5);
     Node* c2 = new Node(15);
